@@ -1,13 +1,15 @@
 
 type PropsType = {
     title: string
-    title2?: number | boolean
+    title2?: number
+    title3?: boolean
 }
-export const Todolist = ({title, title2}: PropsType) => {
+export const Todolist = ({title, title2, title3}: PropsType) => {
     return (
         <div>
             <h3>{title}</h3>
             <h3>{title2}</h3>
+            <h3>{title3}</h3>
             <div>
                 <input type="text"/>
                 <button>+</button>
