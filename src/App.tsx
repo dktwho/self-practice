@@ -7,7 +7,7 @@ function App() {
     return (
         <div className="App">
             <Todolist title={'What tot learn'} title2={100200}/>
-            <Todolist title={'What tot buy'} />
+            <Todolist title={'What tot buy'} title2={true} />
         </div>
     );
 }
