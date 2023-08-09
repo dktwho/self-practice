@@ -1,7 +1,11 @@
-export const Todolist = () => {
-    return  (
+
+type PropsType = {
+    title: string
+}
+export const Todolist = ({title}: PropsType) => {
+    return (
         <div>
-            <h3>What to learn</h3>
+            <h3>{title}</h3>
             <div>
                 <input type="text"/>
                 <button>+</button>
@@ -17,6 +21,6 @@ export const Todolist = () => {
                 <button>Completed</button>
             </div>
         </div>
-        )
+    )
 
 }
