@@ -3,10 +3,8 @@ import './App.css';
 import {Todolist} from "./Todolist";
 
 function App() {
-    const title = 'What to learn'
-    const title2 = 100200
-    const title3 = true
-    const title22 = 'What to buy'
+    const title1 = 'What to learn'
+    const title2 = 'What to buy'
 
     const tasks1 = [
         {id: 1, title: 'HTML&CSS', isDone: true},
@@ -22,8 +20,8 @@ function App() {
 
     return (
         <div className="App">
-            <Todolist title={title} title2={title2} tasks={tasks1}/>
-            <Todolist title={title22} title3={title3} tasks={tasks2} />
+            <Todolist title={title1} tasks={tasks1}/>
+            <Todolist title={title2} tasks={tasks2}/>
         </div>
     );
 }
