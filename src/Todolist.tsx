@@ -3,8 +3,16 @@ type PropsType = {
     title: string
     title2?: number
     title3?: boolean
+    tasks: TasksType[]
 }
-export const Todolist = ({title, title2, title3}: PropsType) => {
+
+type TasksType = {
+    id: number
+    title: string
+    isDone: boolean
+
+}
+export const Todolist = ({title, title2, title3,tasks}: PropsType) => {
     return (
         <div>
             <h3>{title}</h3>
@@ -15,9 +23,9 @@ export const Todolist = ({title, title2, title3}: PropsType) => {
                 <button>+</button>
             </div>
             <ul>
-                <li><input type="checkbox" checked={true}/> <span>HTML</span></li>
-                <li><input type="checkbox" checked={true}/> <span>CSS</span></li>
-                <li><input type="checkbox" checked={false}/> <span>REACT</span></li>
+                <li><input type="checkbox" checked={true}/> <span>{tasks[0].title}</span></li>
+                <li><input type="checkbox" checked={true}/> <span>{tasks[1].title}</span></li>
+                <li><input type="checkbox" checked={false}/> <span>{tasks[2].title}</span></li>
             </ul>
             <div>
                 <button>All</button>
