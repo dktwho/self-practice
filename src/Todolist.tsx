@@ -1,7 +1,7 @@
 
 type PropsType = {
     title: string
-    title2: number
+    title2?: number
 }
 export const Todolist = ({title, title2}: PropsType) => {
     return (
