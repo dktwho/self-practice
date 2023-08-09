@@ -4,7 +4,7 @@ import {Todolist} from "./Todolist";
 
 function App() {
     const title = 'What to learn'
-    const title2 =100200
+    const title2 = 100200
     const title3 = true
     const title22 = 'What to buy'
 
