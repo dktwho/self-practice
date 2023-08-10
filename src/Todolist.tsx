@@ -2,7 +2,7 @@ type PropsType = {
     title: string
     tasks: TasksType[]
     removeTask: (id: number) => void
-    taskFilter: () => void
+    taskFilter: (value: string) => void
 
 }
 
@@ -31,9 +31,9 @@ export const Todolist = ({title, tasks, removeTask, taskFilter}: PropsType) => {
                 })}
             </ul>
             <div>
-                <button onClick={() => taskFilter() }>All</button>
-                <button onClick={() => taskFilter() }>Active</button>
-                <button onClick={() => taskFilter() }>Completed</button>
+                <button onClick={() => taskFilter('all') }>All</button>
+                <button onClick={() => taskFilter('active') }>Active</button>
+                <button onClick={() => taskFilter('completed') }>Completed</button>
             </div>
         </div>
     )

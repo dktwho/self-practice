@@ -9,24 +9,33 @@ function App() {
         {id: 2, title: 'Javascript', isDone: true},
         {id: 3, title: 'React', isDone: false},
     ])
-    const [filter, setFilter] = useState('all')
+    const [valueFilter, setValueFilter] = useState('all')
+
     const title1 = 'What to learn'
+
+    let filter = tasks
+    if(valueFilter === 'active') {
+        filter = tasks.filter(el => el.isDone === true)
+    }
+    if(valueFilter === 'completed') {
+        filter = tasks.filter(el => el.isDone === false)
+    }
+
+    const taskFilter = (value: string) => {
+        setValueFilter(value)
+    }
+
 
     const removeTask = (id: number) => {
         setTasks(tasks.filter(el => el.id !== id))
     }
-
-    const taskFilter = () => {
-        console.log('task filter')
-    }
-
 
 
     return (
         <div className="App">
             <Todolist
                 title={title1}
-                tasks={tasks}
+                tasks={filter}
                 removeTask={removeTask}
                 taskFilter={taskFilter}
                />
