@@ -20,11 +20,29 @@ export const Todolist = ({title, tasks, removeTask}: PropsType) => {
 
     const filterFoo = () => {
         let filter = tasks
-        if(valueFilter === 'active') {
-            filter = tasks.filter(el => el.isDone === true)
-        }
-        if(valueFilter === 'completed') {
-            filter = tasks.filter(el => el.isDone === false)
+        // let filter = tasks
+        // if(valueFilter === 'active') {
+        //     filter = tasks.filter(el => el.isDone === true)
+        // }
+        // if(valueFilter === 'completed') {
+        //     filter = tasks.filter(el => el.isDone === false)
+        // }
+        // return filter
+
+        switch (valueFilter) {
+
+            case 'active': {
+                return filter = tasks.filter(el => el.isDone === true)
+            }
+
+            case 'completed': {
+                return filter = tasks.filter(el => el.isDone === false)
+            }
+
+            default: {
+                return filter = tasks
+            }
+
         }
         return filter
     }
@@ -32,7 +50,6 @@ export const Todolist = ({title, tasks, removeTask}: PropsType) => {
     const taskFilter = (value: FilterType) => {
         setValueFilter(value)
     }
-
 
 
     return (
@@ -53,9 +70,9 @@ export const Todolist = ({title, tasks, removeTask}: PropsType) => {
                 })}
             </ul>
             <div>
-                <button onClick={() => taskFilter('all') }>All</button>
-                <button onClick={() => taskFilter('active') }>Active</button>
-                <button onClick={() => taskFilter('completed') }>Completed</button>
+                <button onClick={() => taskFilter('all')}>All</button>
+                <button onClick={() => taskFilter('active')}>Active</button>
+                <button onClick={() => taskFilter('completed')}>Completed</button>
             </div>
         </div>
     )
