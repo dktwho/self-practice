@@ -1,8 +1,10 @@
+import {FilterType} from "./App";
+
 type PropsType = {
     title: string
     tasks: TasksType[]
     removeTask: (id: number) => void
-    taskFilter: (value: string) => void
+    taskFilter: (value: FilterType) => void
 
 }
 
@@ -10,8 +12,9 @@ export type TasksType = {
     id: number
     title: string
     isDone: boolean
-
 }
+
+
 export const Todolist = ({title, tasks, removeTask, taskFilter}: PropsType) => {
     return (
         <div>

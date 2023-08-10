@@ -2,14 +2,14 @@ import React, {useState} from 'react';
 import './App.css';
 import {TasksType, Todolist} from "./Todolist";
 
-
+export type FilterType = 'all' | 'active' | 'completed'
 function App() {
     const [tasks, setTasks] = useState<TasksType[]>([
         {id: 1, title: 'HTML&CSS', isDone: true},
         {id: 2, title: 'Javascript', isDone: true},
         {id: 3, title: 'React', isDone: false},
     ])
-    const [valueFilter, setValueFilter] = useState('all')
+    const [valueFilter, setValueFilter] = useState<FilterType>('all')
 
     const title1 = 'What to learn'
 
@@ -21,10 +21,9 @@ function App() {
         filter = tasks.filter(el => el.isDone === false)
     }
 
-    const taskFilter = (value: string) => {
+    const taskFilter = (value: FilterType) => {
         setValueFilter(value)
     }
-
 
     const removeTask = (id: number) => {
         setTasks(tasks.filter(el => el.id !== id))
