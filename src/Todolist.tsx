@@ -18,12 +18,15 @@ export const Todolist = ({title, tasks, removeTask}: PropsType) => {
 
     const [valueFilter, setValueFilter] = useState<FilterType>('all')
 
-    let filter = tasks
-    if(valueFilter === 'active') {
-        filter = tasks.filter(el => el.isDone === true)
-    }
-    if(valueFilter === 'completed') {
-        filter = tasks.filter(el => el.isDone === false)
+    const filterFoo = () => {
+        let filter = tasks
+        if(valueFilter === 'active') {
+            filter = tasks.filter(el => el.isDone === true)
+        }
+        if(valueFilter === 'completed') {
+            filter = tasks.filter(el => el.isDone === false)
+        }
+        return filter
     }
 
     const taskFilter = (value: FilterType) => {
@@ -40,7 +43,7 @@ export const Todolist = ({title, tasks, removeTask}: PropsType) => {
                 <button>+</button>
             </div>
             <ul>
-                {filter.map(task => {
+                {filterFoo().map(task => {
                     return (
                         <li key={task.id}><input type="checkbox" checked={task.isDone} readOnly/>
                             <span>{task.title}</span>
