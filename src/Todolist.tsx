@@ -1,6 +1,7 @@
 type PropsType = {
     title: string
     tasks: TasksType[]
+    removeTask: (id: number) => void
 }
 
 type TasksType = {
@@ -9,11 +10,10 @@ type TasksType = {
     isDone: boolean
 
 }
-export const Todolist = ({title, tasks}: PropsType) => {
+export const Todolist = ({title, tasks, removeTask}: PropsType) => {
     return (
         <div>
             <h3>{title}</h3>
-
             <div>
                 <input type="text"/>
                 <button>+</button>
@@ -23,7 +23,7 @@ export const Todolist = ({title, tasks}: PropsType) => {
                     return (
                         <li key={task.id}><input type="checkbox" checked={task.isDone} readOnly/>
                             <span>{task.title}</span>
-                            <button onClick={() => console.log(task.title)}>x</button>
+                            <button onClick={() => removeTask(task.id)}>x</button>
                         </li>
                     )
                 })}
