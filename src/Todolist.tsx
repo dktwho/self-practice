@@ -6,7 +6,7 @@ type PropsType = {
     tasks: TasksType[]
     removeTask: (id: string) => void
     changeFilter: (value: FilterValuesType) => void
-    addTask: (value: string) => void
+    addTask: (newTitle: string) => void
 }
 
 export const Todolist = ({title, tasks, removeTask, changeFilter, addTask}: PropsType) => {
@@ -16,12 +16,19 @@ export const Todolist = ({title, tasks, removeTask, changeFilter, addTask}: Prop
         setInputValue(e.currentTarget.value)
     }
 
+    const addTaskHandler = () => {
+        addTask(inputValue)
+        setInputValue('')
+    }
+
+
+
     return (
         <div>
             <h3>{title}</h3>
             <div>
                 <input type="text" onChange={onChange} value={inputValue}/>
-                <button onClick={() => addTask(inputValue)}>+</button>
+                <button onClick={addTaskHandler}>+</button>
             </div>
             <ul>
                 {tasks.map(task => {
