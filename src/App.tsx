@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {ChangeEvent, useState} from 'react';
 import './App.css';
 import {TasksType, Todolist} from "./Todolist";
 import {v4} from 'uuid';
@@ -29,6 +29,11 @@ function App() {
         filteredTasks = tasks.filter(el => el.isDone === false)
     }
 
+    const addTask = () => {
+        let newTask = {id: v4(), title: 'hardcode', isDone: false}
+        setTasks([ newTask, ...tasks])
+    }
+
 
     const removeTask = (id: string) => {
         setTasks(tasks.filter(el => el.id !== id))
@@ -46,6 +51,7 @@ function App() {
                 tasks={filteredTasks}
                 removeTask={removeTask}
                 changeFilter={changeFilter}
+                addTask={addTask}
             />
         </div>
     );
