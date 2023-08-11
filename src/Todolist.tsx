@@ -22,7 +22,7 @@ export const Todolist = ({title, tasks, removeTask, changeFilter, addTask}: Prop
     }
 
     const onKeyPressHandler = (e: React.KeyboardEvent<HTMLInputElement>) => {
-        if (e.charCode === 13) {
+        if (e.key === 'Enter') {
             addTaskHandler()
         }
     }
