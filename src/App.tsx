@@ -1,4 +1,4 @@
-import React, {ChangeEvent, useState} from 'react';
+import React, { useState} from 'react';
 import './App.css';
 import { Todolist} from "./Todolist";
 import {v4} from 'uuid';
