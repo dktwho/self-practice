@@ -1,11 +1,14 @@
 import React, {ChangeEvent, useState} from 'react';
 import './App.css';
-import {TasksType, Todolist} from "./Todolist";
+import { Todolist} from "./Todolist";
 import {v4} from 'uuid';
 
 export type FilterValuesType = 'all' | 'active' | 'completed'
-
-
+export type TasksType = {
+    id: string
+    title: string
+    isDone: boolean
+}
 
 function App() {
     const [tasks, setTasks] = useState<TasksType[]>([
@@ -17,9 +20,7 @@ function App() {
     ])
 
     const [filter, setFilter] = useState<FilterValuesType>('all')
-
     const title1 = 'What to learn'
-
 
     let filteredTasks = tasks
     if (filter === 'active') {
@@ -29,9 +30,9 @@ function App() {
         filteredTasks = tasks.filter(el => el.isDone === false)
     }
 
-    const addTask = () => {
-        let newTask = {id: v4(), title: 'hardcode', isDone: false}
-        setTasks([ newTask, ...tasks])
+    const addTask = (value: string) => {
+        let newTask = {id: v4(), title: value, isDone: false}
+        setTasks([newTask, ...tasks])
     }
 
 

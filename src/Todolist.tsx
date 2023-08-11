@@ -1,28 +1,27 @@
-import {FilterValuesType} from "./App";
-
+import {FilterValuesType, TasksType} from "./App";
+import {ChangeEvent, useState} from "react";
 
 type PropsType = {
     title: string
     tasks: TasksType[]
     removeTask: (id: string) => void
     changeFilter: (value: FilterValuesType) => void
-    addTask: () => void
-}
-
-export type TasksType = {
-    id: string
-    title: string
-    isDone: boolean
+    addTask: (value: string) => void
 }
 
 export const Todolist = ({title, tasks, removeTask, changeFilter, addTask}: PropsType) => {
+    const [inputValue, setInputValue] =  useState<string>('')
+
+    const onChange = (e: ChangeEvent<HTMLInputElement>) => {
+        setInputValue(e.currentTarget.value)
+    }
 
     return (
         <div>
             <h3>{title}</h3>
             <div>
-                <input type="text"/>
-                <button onClick={() => addTask()}>+</button>
+                <input type="text" onChange={onChange} value={inputValue}/>
+                <button onClick={() => addTask(inputValue)}>+</button>
             </div>
             <ul>
                 {tasks.map(task => {
