@@ -10,7 +10,7 @@ type PropsType = {
 }
 
 export const Todolist = ({title, tasks, removeTask, changeFilter, addTask}: PropsType) => {
-    const [inputValue, setInputValue] =  useState<string>('')
+    const [inputValue, setInputValue] = useState<string>('')
 
     const onChange = (e: ChangeEvent<HTMLInputElement>) => {
         setInputValue(e.currentTarget.value)
@@ -21,13 +21,21 @@ export const Todolist = ({title, tasks, removeTask, changeFilter, addTask}: Prop
         setInputValue('')
     }
 
+    const onKeyPressHandler = (e: React.KeyboardEvent<HTMLInputElement>) => {
+        if (e.charCode === 13) {
+            addTaskHandler()
+        }
+    }
 
 
     return (
         <div>
             <h3>{title}</h3>
             <div>
-                <input type="text" onChange={onChange} value={inputValue}/>
+                <input type="text"
+                       onChange={onChange}
+                       onKeyPress={onKeyPressHandler}
+                       value={inputValue}/>
                 <button onClick={addTaskHandler}>+</button>
             </div>
             <ul>
