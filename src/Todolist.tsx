@@ -27,6 +27,20 @@ export const Todolist = ({title, tasks, removeTask, changeFilter, addTask}: Prop
         }
     }
 
+    const onChangeFilterAll = () => {
+        changeFilter('all')
+    }
+
+    const onChangeFilterActive = () => {
+        changeFilter('active')
+    }
+
+
+    const onChangeFilterCompleted = () => {
+        changeFilter('completed')
+    }
+
+
 
     return (
         <div>
@@ -49,9 +63,9 @@ export const Todolist = ({title, tasks, removeTask, changeFilter, addTask}: Prop
                 })}
             </ul>
             <div>
-                <button onClick={() => changeFilter('all')}>All</button>
-                <button onClick={() => changeFilter('active')}>Active</button>
-                <button onClick={() => changeFilter('completed')}>Completed</button>
+                <button onClick={onChangeFilterAll}>All</button>
+                <button onClick={onChangeFilterActive}>Active</button>
+                <button onClick={onChangeFilterCompleted}>Completed</button>
             </div>
         </div>
     )
