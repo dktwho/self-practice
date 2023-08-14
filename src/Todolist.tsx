@@ -36,6 +36,22 @@ export const Todolist = ({title, tasks, removeTask, changeFilter, addTask}: Prop
         removeTask(id)
     }
 
+    const result = tasks.map(task => {
+        // const removeTaskHandlerInsideMap = () => {
+        //     removeTask(task.id)
+        // }
+
+        return (
+            <li key={task.id}><input type="checkbox" checked={task.isDone} readOnly/>
+                <span>{task.title}</span>
+                {/*<button onClick={() => removeTask(task.id)}>x</button>*/}
+                {/*<button onClick={removeTaskHandlerInsideMap}>x</button>*/}
+                {/*<button onClick={() => removeTaskHandler(task.id)}>x</button>*/}
+                <Button title='x' callback={() => removeTaskHandler(task.id)}/>
+            </li>
+        )
+    })
+
     return (
         <div>
             <h3>{title}</h3>
@@ -45,24 +61,10 @@ export const Todolist = ({title, tasks, removeTask, changeFilter, addTask}: Prop
                        onKeyPress={onKeyPressHandler}
                        value={inputValue}/>
                 {/*<button onClick={addTaskHandler}>+</button>*/}
-                <Button title={'add'}  callback={addTaskHandler} />
+                <Button title={'add'} callback={addTaskHandler}/>
             </div>
             <ul>
-                {tasks.map(task => {
-                    // const removeTaskHandlerInsideMap = () => {
-                    //     removeTask(task.id)
-                    // }
-
-                    return (
-                        <li key={task.id}><input type="checkbox" checked={task.isDone} readOnly/>
-                            <span>{task.title}</span>
-                            {/*<button onClick={() => removeTask(task.id)}>x</button>*/}
-                            {/*<button onClick={removeTaskHandlerInsideMap}>x</button>*/}
-                            {/*<button onClick={() => removeTaskHandler(task.id)}>x</button>*/}
-                            <Button title='x' callback={() => removeTaskHandler(task.id)}/>
-                        </li>
-                    )
-                })}
+                {result}
             </ul>
             <div>
                 {/*<button onClick={() => onChangeFilterHandler('all')}>All</button>*/}
