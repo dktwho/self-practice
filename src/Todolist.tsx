@@ -58,15 +58,19 @@ export const Todolist = ({title, tasks, removeTask, changeFilter, addTask}: Prop
                             <span>{task.title}</span>
                             {/*<button onClick={() => removeTask(task.id)}>x</button>*/}
                             {/*<button onClick={removeTaskHandlerInsideMap}>x</button>*/}
-                            <button onClick={() => removeTaskHandler(task.id)}>x</button>
+                            {/*<button onClick={() => removeTaskHandler(task.id)}>x</button>*/}
+                            <Button title='x' callback={() => removeTaskHandler(task.id)}/>
                         </li>
                     )
                 })}
             </ul>
             <div>
-                <button onClick={() => onChangeFilterHandler('all')}>All</button>
-                <button onClick={() => onChangeFilterHandler('active')}>Active</button>
-                <button onClick={() => onChangeFilterHandler('completed')}>Completed</button>
+                {/*<button onClick={() => onChangeFilterHandler('all')}>All</button>*/}
+                {/*<button onClick={() => onChangeFilterHandler('active')}>Active</button>*/}
+                {/*<button onClick={() => onChangeFilterHandler('completed')}>Completed</button>*/}
+                <Button title={'All'} callback={() => onChangeFilterHandler('all')}/>
+                <Button title={'Active'} callback={() => onChangeFilterHandler('active')}/>
+                <Button title={'Completed'} callback={() => onChangeFilterHandler('completed')}/>
             </div>
         </div>
     )
