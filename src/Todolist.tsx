@@ -1,5 +1,6 @@
 import {FilterValuesType, TasksType} from "./App";
 import {ChangeEvent, useState} from "react";
+import {Button} from "./components/Button";
 
 type PropsType = {
     title: string
@@ -43,7 +44,8 @@ export const Todolist = ({title, tasks, removeTask, changeFilter, addTask}: Prop
                        onChange={onChangeHandler}
                        onKeyPress={onKeyPressHandler}
                        value={inputValue}/>
-                <button onClick={addTaskHandler}>+</button>
+                {/*<button onClick={addTaskHandler}>+</button>*/}
+                <Button title={'add'}  callback={addTaskHandler} />
             </div>
             <ul>
                 {tasks.map(task => {
