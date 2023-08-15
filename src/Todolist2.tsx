@@ -30,15 +30,22 @@ export function Todolist2(props: PropsType) {
         }
     }
 
-    const removeTodolistHandler = (id: number) => {
-        props.removeTodolist(id)
+    const removeTodolistHandler = (todolistId: number) => {
+        props.removeTodolist(todolistId)
+    }
+
+    const addTaskHandler = (title: string,todolistId: number  ) => {
+        props.addTask(title, todolistId)
+    }
+
+    const removetaskHandler = (taskId: string, todolistId: number) => {
+        props.removeTask(taskId, todolistId)
     }
 
 
 
     return <div>
         <h3> {props.title}
-            {/*<button onClick={() => {'removeTodolist'}}>x</button>*/}
             <Button title={'x'} callback={() => removeTodolistHandler(props.id)}/>
 
         </h3>
@@ -48,7 +55,7 @@ export function Todolist2(props: PropsType) {
                    onKeyPress={onKeyPressHandler}
                    className={error ? "error" : ""}
             />
-            <button onClick={() => {'addTask'}}>+</button>
+           <Button title={'add'} callback={() => addTaskHandler(title, props.id )}/>
             {error && <div className="error-message">{error}</div>}
         </div>
         <ul>
@@ -62,7 +69,7 @@ export function Todolist2(props: PropsType) {
                     return <li key={t.taskId} className={t.isDone ? "is-done" : ""}>
                         <input type="checkbox" onChange={onChangeHandler} checked={t.isDone}/>
                         <span>{t.title}</span>
-                        <button onClick={() => {'removeTask'}}>x</button>
+                        <Button title={'x'} callback={() => removetaskHandler(t.taskId, props.id)} />
                     </li>
                 })
             }
