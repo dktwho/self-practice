@@ -23,7 +23,7 @@ export function Todolist2(props: PropsType) {
     const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
         setTitle(e.currentTarget.value)
     }
-    const onKeyPressHandler = (e: KeyboardEvent<HTMLInputElement>, title: string, todolistId: number ) => {
+    const onKeyPressHandler = (e: KeyboardEvent<HTMLInputElement>, title: string, todolistId: number) => {
         setError(null);
         if (e.charCode === 13) {
             props.addTask(title, todolistId);
@@ -44,7 +44,7 @@ export function Todolist2(props: PropsType) {
         props.removeTask(taskId, props.id)
     }
 
-    const changeFilterHandler = (value: FilterValuesType, ) => {
+    const changeFilterHandler = (value: FilterValuesType) => {
         props.changeFilter(value, props.id)
     }
 
