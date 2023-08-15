@@ -7,11 +7,11 @@ export type ButtonType = {
 }
 export const Button = ({title, callback}: ButtonType) => {
 
-    const addTaskHandler = () => {
+    const onClickHandler = () => {
         callback()
     }
     return (
-        <button onClick={addTaskHandler}>
+        <button onClick={onClickHandler}>
             {title}
         </button>
     );

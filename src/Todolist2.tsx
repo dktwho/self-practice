@@ -1,5 +1,6 @@
 import React, {ChangeEvent, useState, KeyboardEvent} from 'react';
 import {FilterValuesType, TasksType} from './App2';
+import {Button} from "./components/Button";
 
 
 type PropsType = {
@@ -29,13 +30,16 @@ export function Todolist2(props: PropsType) {
         }
     }
 
+    const removeTodolistHandler = (id: number) => {
+        props.removeTodolist(id)
+    }
+
+
 
     return <div>
         <h3> {props.title}
-            <button onClick={() => {
-                'removeTodolist'
-            }}>x
-            </button>
+            {/*<button onClick={() => {'removeTodolist'}}>x</button>*/}
+            <Button title={'x'} callback={() => removeTodolistHandler(props.id)}/>
 
         </h3>
         <div>
