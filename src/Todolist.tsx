@@ -1,6 +1,8 @@
 import {FilterValuesType, TasksType} from "./App";
 import {ChangeEvent, useState} from "react";
 import {Button} from "./components/Button";
+import S from './App.module.css'
+
 
 type PropsType = {
     title: string
@@ -13,18 +15,22 @@ type PropsType = {
 
 export const Todolist = ({title, tasks, removeTask, changeFilter, addTask, changeCheckBoxStatus}: PropsType) => {
     const [inputValue, setInputValue] = useState<string>('')
+    const [error, setError] = useState<boolean>(false)
+
+    const addTaskHandler = () => {
+        if (inputValue.trim()) {
+            addTask(inputValue.trim())
+            setInputValue('')
+        } else {
+            setError(true)
+        }
+    }
 
     const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
+        setError(false)
         setInputValue(e.currentTarget.value)
     }
 
-    const addTaskHandler = () => {
-        if(inputValue.trim()) {
-            addTask(inputValue.trim())
-            setInputValue('')
-        }
-
-    }
 
     const onKeyPressHandler = (e: React.KeyboardEvent<HTMLInputElement>) => {
         if (e.key === 'Enter') {
@@ -53,6 +59,7 @@ export const Todolist = ({title, tasks, removeTask, changeFilter, addTask, chang
         return (
             <li key={task.id}>
                 <input
+
                     type="checkbox"
                     checked={task.isDone}
                     onChange={(e) => changeBoxStatusHandler(task.id, !task.isDone)}/>
@@ -70,6 +77,7 @@ export const Todolist = ({title, tasks, removeTask, changeFilter, addTask, chang
             <h3>{title}</h3>
             <div>
                 <input type="text"
+                       className={error ? S.error : ''}
                        onChange={onChangeHandler}
                        onKeyPress={onKeyPressHandler}
                        value={inputValue}/>
