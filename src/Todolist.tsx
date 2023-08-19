@@ -15,19 +15,19 @@ type PropsType = {
 
 export const Todolist = ({title, tasks, removeTask, changeFilter, addTask, changeCheckBoxStatus}: PropsType) => {
     const [inputValue, setInputValue] = useState<string>('')
-    const [error, setError] = useState<boolean>(false)
+    const [error, setError] = useState<string | null>(null)
 
     const addTaskHandler = () => {
         if (inputValue.trim()) {
             addTask(inputValue.trim())
             setInputValue('')
         } else {
-            setError(true)
+            setError('Title is required')
         }
     }
 
     const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
-        setError(false)
+        setError(null)
         setInputValue(e.currentTarget.value)
     }
 
@@ -84,7 +84,7 @@ export const Todolist = ({title, tasks, removeTask, changeFilter, addTask, chang
                 {/*<button onClick={addTaskHandler}>+</button>*/}
                 <Button title={'add'} callback={addTaskHandler}/>
             </div>
-            {error && <div className={S.errorMessage}>Title is required</div>}
+            {error && <div className={S.errorMessage}>{error}</div>}
             <ul>
                 {result}
             </ul>
