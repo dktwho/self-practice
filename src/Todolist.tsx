@@ -84,6 +84,7 @@ export const Todolist = ({title, tasks, removeTask, changeFilter, addTask, chang
                 {/*<button onClick={addTaskHandler}>+</button>*/}
                 <Button title={'add'} callback={addTaskHandler}/>
             </div>
+            {error && <div className={S.errorMessage}>Title is required</div>}
             <ul>
                 {result}
             </ul>
