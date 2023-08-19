@@ -59,6 +59,7 @@ function App() {
                 addTask={addTask}
                 changeCheckBoxStatus={changeCheckBoxStatus}
             />
+
         </div>
     );
 }

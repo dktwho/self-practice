@@ -19,8 +19,11 @@ export const Todolist = ({title, tasks, removeTask, changeFilter, addTask, chang
     }
 
     const addTaskHandler = () => {
-        addTask(inputValue)
-        setInputValue('')
+        if(inputValue.trim()) {
+            addTask(inputValue.trim())
+            setInputValue('')
+        }
+
     }
 
     const onKeyPressHandler = (e: React.KeyboardEvent<HTMLInputElement>) => {
@@ -52,7 +55,7 @@ export const Todolist = ({title, tasks, removeTask, changeFilter, addTask, chang
                 <input
                     type="checkbox"
                     checked={task.isDone}
-                    onChange={(e) => changeBoxStatusHandler(task.id, task.isDone)}/>
+                    onChange={(e) => changeBoxStatusHandler(task.id, !task.isDone)}/>
                 <span>{task.title}</span>
                 {/*<button onClick={() => removeTask(task.id)}>x</button>*/}
                 {/*<button onClick={removeTaskHandlerInsideMap}>x</button>*/}
