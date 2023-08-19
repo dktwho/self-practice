@@ -16,6 +16,7 @@ type PropsType = {
 export const Todolist = ({title, tasks, removeTask, changeFilter, addTask, changeCheckBoxStatus}: PropsType) => {
     const [inputValue, setInputValue] = useState<string>('')
     const [error, setError] = useState<string | null>(null)
+    const [buttonName, setButtonName] = useState<FilterValuesType>('all')
 
     const addTaskHandler = () => {
         if (inputValue.trim()) {
@@ -40,6 +41,7 @@ export const Todolist = ({title, tasks, removeTask, changeFilter, addTask, chang
 
     const onChangeFilterHandler = (value: FilterValuesType) => {
         changeFilter(value)
+        setButtonName(value)
     }
 
     const removeTaskHandler = (id: string) => {
@@ -92,9 +94,9 @@ export const Todolist = ({title, tasks, removeTask, changeFilter, addTask, chang
                 {/*<button onClick={() => onChangeFilterHandler('all')}>All</button>*/}
                 {/*<button onClick={() => onChangeFilterHandler('active')}>Active</button>*/}
                 {/*<button onClick={() => onChangeFilterHandler('completed')}>Completed</button>*/}
-                <Button title={'All'} callback={() => onChangeFilterHandler('all')}/>
-                <Button title={'Active'} callback={() => onChangeFilterHandler('active')}/>
-                <Button title={'Completed'} callback={() => onChangeFilterHandler('completed')}/>
+                <Button className={buttonName === 'all' ? S.activeFilter : ''} title={'All'} callback={() => onChangeFilterHandler('all')}/>
+                <Button  className={buttonName === 'active' ? S.activeFilter : ''}title={'Active'} callback={() => onChangeFilterHandler('active')}/>
+                <Button  className={buttonName === 'completed' ? S.activeFilter : ''}title={'Completed'} callback={() => onChangeFilterHandler('completed')}/>
             </div>
         </div>
     )
