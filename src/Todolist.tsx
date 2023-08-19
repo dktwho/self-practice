@@ -8,9 +8,10 @@ type PropsType = {
     removeTask: (id: string) => void
     changeFilter: (value: FilterValuesType) => void
     addTask: (newTitle: string) => void
+    changeCheckBoxStatus: (id: string, isDone: any) => void
 }
 
-export const Todolist = ({title, tasks, removeTask, changeFilter, addTask}: PropsType) => {
+export const Todolist = ({title, tasks, removeTask, changeFilter, addTask, changeCheckBoxStatus}: PropsType) => {
     const [inputValue, setInputValue] = useState<string>('')
 
     const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
@@ -41,8 +42,17 @@ export const Todolist = ({title, tasks, removeTask, changeFilter, addTask}: Prop
         //     removeTask(task.id)
         // }
 
+        const changeBoxStatusHandler = (tId: string, isDone: boolean) => {
+            changeCheckBoxStatus(tId, isDone)
+        }
+
+
         return (
-            <li key={task.id}><input type="checkbox" checked={task.isDone} readOnly/>
+            <li key={task.id}>
+                <input
+                    type="checkbox"
+                    checked={task.isDone}
+                    onChange={(e) => changeBoxStatusHandler(task.id, task.isDone)}/>
                 <span>{task.title}</span>
                 {/*<button onClick={() => removeTask(task.id)}>x</button>*/}
                 {/*<button onClick={removeTaskHandlerInsideMap}>x</button>*/}
