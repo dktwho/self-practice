@@ -9,3 +9,7 @@
 .activeFilter {
     background-color: gray;
 }
+
+.isDone {
+    opacity: 0.5;
+}

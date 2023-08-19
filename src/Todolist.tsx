@@ -59,9 +59,9 @@ export const Todolist = ({title, tasks, removeTask, changeFilter, addTask, chang
 
 
         return (
-            <li key={task.id}>
+            <li key={task.id}
+                className={task.isDone ? S.isDone : ''}>
                 <input
-
                     type="checkbox"
                     checked={task.isDone}
                     onChange={(e) => changeBoxStatusHandler(task.id, !task.isDone)}/>
@@ -94,9 +94,12 @@ export const Todolist = ({title, tasks, removeTask, changeFilter, addTask, chang
                 {/*<button onClick={() => onChangeFilterHandler('all')}>All</button>*/}
                 {/*<button onClick={() => onChangeFilterHandler('active')}>Active</button>*/}
                 {/*<button onClick={() => onChangeFilterHandler('completed')}>Completed</button>*/}
-                <Button className={buttonName === 'all' ? S.activeFilter : ''} title={'All'} callback={() => onChangeFilterHandler('all')}/>
-                <Button  className={buttonName === 'active' ? S.activeFilter : ''}title={'Active'} callback={() => onChangeFilterHandler('active')}/>
-                <Button  className={buttonName === 'completed' ? S.activeFilter : ''}title={'Completed'} callback={() => onChangeFilterHandler('completed')}/>
+                <Button className={buttonName === 'all' ? S.activeFilter : ''} title={'All'}
+                        callback={() => onChangeFilterHandler('all')}/>
+                <Button className={buttonName === 'active' ? S.activeFilter : ''} title={'Active'}
+                        callback={() => onChangeFilterHandler('active')}/>
+                <Button className={buttonName === 'completed' ? S.activeFilter : ''} title={'Completed'}
+                        callback={() => onChangeFilterHandler('completed')}/>
             </div>
         </div>
     )
