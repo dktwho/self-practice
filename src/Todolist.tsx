@@ -2,6 +2,7 @@ import {FilterValuesType, TasksType} from "./App";
 import {ChangeEvent, useState} from "react";
 import {Button} from "./components/Button";
 import S from './App.module.css'
+import {Checkbox} from "./components/Checkbox";
 
 
 type PropsType = {
@@ -10,7 +11,7 @@ type PropsType = {
     removeTask: (id: string) => void
     changeFilter: (value: FilterValuesType) => void
     addTask: (newTitle: string) => void
-    changeCheckBoxStatus: (id: string, isDone: any) => void
+    changeCheckBoxStatus: (id: string, isDone: boolean) => void
 }
 
 export const Todolist = ({title, tasks, removeTask, changeFilter, addTask, changeCheckBoxStatus}: PropsType) => {
@@ -53,18 +54,25 @@ export const Todolist = ({title, tasks, removeTask, changeFilter, addTask, chang
         //     removeTask(task.id)
         // }
 
-        const changeBoxStatusHandler = (tId: string, isDone: boolean) => {
-            changeCheckBoxStatus(tId, isDone)
+        // const changeBoxStatusHandler = (tID: string, e: ChangeEvent<HTMLInputElement>) => {
+        //     changeCheckBoxStatus(tID, e.currentTarget.checked)
+        // }
+
+        const changeBoxStatusHandler = (tID: string, isDone: boolean ) => {
+            changeCheckBoxStatus(tID, isDone)
         }
 
 
         return (
             <li key={task.id}
                 className={task.isDone ? S.isDone : ''}>
-                <input
-                    type="checkbox"
-                    checked={task.isDone}
-                    onChange={(e) => changeBoxStatusHandler(task.id, !task.isDone)}/>
+                {/*<input*/}
+                {/*    type="checkbox"*/}
+                {/*    checked={task.isDone}*/}
+                {/*    // onChange={(e) => changeBoxStatusHandler(task.id, e.currentTarget.checked)}/>*/}
+
+                <Checkbox callBack={(newIsDone) => changeBoxStatusHandler(task.id, newIsDone)} checked={task.isDone} />
+
                 <span>{task.title}</span>
                 {/*<button onClick={() => removeTask(task.id)}>x</button>*/}
                 {/*<button onClick={removeTaskHandlerInsideMap}>x</button>*/}
