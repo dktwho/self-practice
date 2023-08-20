@@ -5,7 +5,7 @@ export type CheckBoxType = {
     callBack: (newIsDone: boolean) => void
     checked: boolean
 }
-export const Checkbox = (props:CheckBoxType ) => {
+export const Checkbox = (props: CheckBoxType) => {
 
     const checkBoxHandler = (e: ChangeEvent<HTMLInputElement>) => {
         props.callBack(e.currentTarget.checked)
